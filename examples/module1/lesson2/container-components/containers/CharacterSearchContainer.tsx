@@ -1,5 +1,5 @@
-import CharacterList from '../components/CharacterList';
-import SearchForm from '../components/SearchForm';
+import CharacterList from '../components/CharacterList/CharacterList';
+import SearchForm from '../components/SearchForm/SearchForm';
 import SearchTitle from '../components/SearchTitle';
 import { useCharacterSearchContainer } from './useCharacterSearchContainer';
 

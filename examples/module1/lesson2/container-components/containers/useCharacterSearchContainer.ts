@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Character } from '../types/Character';
 
+const getSortedCharacters = (characters: Character[], sortOption: string) => {
+  return [...characters].sort((a, b) => {
+    if (sortOption === 'name') {
+      return a.name.localeCompare(b.name);
+    } else if (sortOption === 'created') {
+      return new Date(a.created).getTime() - new Date(b.created).getTime();
+    }
+    return 0;
+  });
+};
+
 export const useCharacterSearchContainer = () => {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
@@ -18,15 +29,6 @@ export const useCharacterSearchContainer = () => {
     }
   }, [name, gender]);
 
-  const sortedCharacters = [...characters].sort((a, b) => {
-    if (sortOption === 'name') {
-      return a.name.localeCompare(b.name);
-    } else if (sortOption === 'created') {
-      return new Date(a.created).getTime() - new Date(b.created).getTime();
-    }
-    return 0;
-  });
-
   return {
     name,
     setName,
@@ -34,6 +36,6 @@ export const useCharacterSearchContainer = () => {
     setGender,
     sortOption,
     setSortOption,
-    sortedCharacters,
+    sortedCharacters: getSortedCharacters(characters, sortOption),
   };
 };
