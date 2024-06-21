@@ -1,9 +1,15 @@
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
+import { useGetProductsQuery } from '../services/productsApi';
+import { Product as ProductType } from '../types/Product';
 import Product from '../components/Product';
-import { ProductContext } from '../contexts/ProductContext';
 
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  const { data, error, isLoading } = useGetProductsQuery();
+  const [products, setProducts] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    setProducts(data || []);
+  }, [data]);
 
   return (
     <div>
@@ -13,6 +19,8 @@ const Home = () => {
             Explore Our Products
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:mx-8 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
+            {error && <p>Error: (</p>}
+            {isLoading && <p>Loading...</p>}
             {products.map((product) => {
               return <Product product={product} key={product.id} />;
             })}
