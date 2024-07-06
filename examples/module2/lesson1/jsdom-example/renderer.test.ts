@@ -2,7 +2,6 @@
 
 import { describe, test, expect } from 'vitest';
 import { renderItems } from './renderer';
-import { render } from '@testing-library/react';
 
 const users: User[] = [
   { id: 1, name: 'John', age: 30, role: 'user' },
