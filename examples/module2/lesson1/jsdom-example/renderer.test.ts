@@ -2,6 +2,7 @@
 
 import { describe, test, expect } from 'vitest';
 import { renderItems } from './renderer';
+import { render } from '@testing-library/react';
 
 const users: User[] = [
   { id: 1, name: 'John', age: 30, role: 'user' },
@@ -23,6 +24,18 @@ describe('User renderer', () => {
 
     const container = document.createElement('div');
     renderItems(container, users);
-    expect(Array.from(container.querySelectorAll('li'))).toHaveLength(2);
+
+    const expectedValueOfBasicUsers = users.filter(
+      (user) => user.role === 'user'
+    ).length;
+    expect(Array.from(container.querySelectorAll('li'))).toHaveLength(
+      expectedValueOfBasicUsers
+    );
+
+    const renderedUsers = container.querySelectorAll('li');
+    const renderedUsersWithAdminRole = Array.from(renderedUsers)
+      .map((u) => u.textContent)
+      .filter((r) => r !== null && r.includes('(Admin)'));
+    expect(renderedUsersWithAdminRole).toHaveLength(0);
   });
 });
