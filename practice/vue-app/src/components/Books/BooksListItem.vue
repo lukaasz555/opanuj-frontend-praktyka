@@ -49,6 +49,7 @@ const removeBook = () => {
     justify-content: space-between;
     position: relative;
     z-index: 1;
+    border-radius: 8px;
 }
 
 .item--wrapper::after {

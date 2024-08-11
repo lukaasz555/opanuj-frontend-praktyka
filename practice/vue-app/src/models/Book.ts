@@ -1,6 +1,6 @@
 export class BookBaseData {
   title = '';
-  authors: string[] = [];
+  authors = '';
 }
 
 export class Book {
@@ -9,15 +9,18 @@ export class Book {
   authors: string[] = [];
   isFavorite = false;
 
-  constructor(id: number, title: string, authors: string[]) {
-    this.id = id;
-    this.title = title;
-    this.authors = authors;
+  constructor(baseData?: { id: number; title: string; authors: string[] }) {
+    if (baseData) {
+      const { id, title, authors } = baseData;
+      this.id = id;
+      this.title = title;
+      this.authors = authors;
+    }
   }
 
   setBaseData(bookBaseData: BookBaseData): void {
     this.title = bookBaseData.title;
-    this.authors = bookBaseData.authors;
+    this.authors = bookBaseData.authors.split(', ');
   }
 
   setIsFavorite(value: boolean): void {

@@ -55,7 +55,8 @@ const books = [
 
 export const getBooks = (): Book[] => {
   return books.map((book) => {
-    return new Book(book.id, book.title, book.authors);
+    const { id, title, authors } = book;
+    return new Book({ id, title, authors });
   });
 };
 

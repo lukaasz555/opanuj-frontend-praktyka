@@ -27,6 +27,8 @@ main {
   flex-direction: column;
   gap: 20px;
   max-width: 600px;
+  padding: 0 8px;
+  width: 100%;
   margin: 20px auto;
 }
 </style>
