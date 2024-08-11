@@ -1,5 +1,6 @@
 <template>
   <div class="list--container">
+    <p>Books list</p>
     <BooksListItem
       v-for="book in booksList"
       :key="book.id"
