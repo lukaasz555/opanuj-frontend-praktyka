@@ -1,6 +1,7 @@
+import { IBook } from '../interfaces/IBook';
 import { Book } from '../models/Book';
 
-const books = [
+const books: IBook[] = [
   {
     id: 533,
     title: 'The Hunger Games',

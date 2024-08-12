@@ -10,10 +10,8 @@
 import { ref } from 'vue';
 import { BookBaseData, Book } from '../../models/Book';
 import { addBook } from '../../services/books.service';
-// import { BOOKS_LIST } from '../../constants/BOOKS_LIST';
 
 const bookBaseData = ref(new BookBaseData());
-// const booksList = inject(BOOKS_LIST);
 
 const onSubmit = (event: Event) => {
   event.preventDefault();

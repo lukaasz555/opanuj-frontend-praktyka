@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/vue';
 import BooksList from './BooksList.vue';
 import { expect, test } from 'vitest';
 import '@testing-library/jest-dom';
-import { mockBooks } from '../../data/books';
 import { describe } from 'node:test';
+import { mockBooks } from '../../data/books';
 import { BOOKS_LIST } from '../../constants/BOOKS_LIST';
 
 describe('BooksList', () => {
